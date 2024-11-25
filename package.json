@@ -1,13 +1,18 @@
 {
-  "name": "techwear-generator-express",
-  "scripts": {
-    "dev": "nodemon src/index.js"
-  },
-  "dependencies": {
-    "@neondatabase/serverless": "^0.9.3",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.17.2",
-    "nodemon": "^2.0.15"
-  }
+	"name": "express",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node api/index.ts"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@vercel/postgres": "^0.7.2",
+		"dotenv": "^16.4.1",
+		"express": "^4.18.2"
+	}
 }

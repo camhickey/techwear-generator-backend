@@ -1,17 +1,21 @@
-const express = require("express");
+require('dotenv').config();
+
+const express = require('express');
+const app = express();
 const { neon } = require("@neondatabase/serverless");
 
 const sql = neon(process.env.DATABASE_URL);
 
-const router = express.Router();
+const bodyParser = require('body-parser');
+const path = require('path');
 
-/*Postgres doesn't allow passing the table name as a parameter,
-so we have to use a switch statement to select the table based on the category parameter.
-I could have used a single table with a category column, but I wanted to keep the tables separate.*/
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-router.get("/:style/:color/:article", async (req, res, next) => {
-  try {
-    const { style, color, article } = req.params;
+app.use(express.static('public'));
+
+app.get('/:style/:color/:article', async (req, res) => {
+  const { style, color, article } = req.params;
+	try {
     switch (style) {
       case "urban":
         const urban = await sql`
@@ -44,9 +48,13 @@ router.get("/:style/:color/:article", async (req, res, next) => {
       default:
         return res.status(404).json({ error: "Style not found" });
     }
-  } catch (err) {
-    next(err);
-  }
+		}
+	catch (error) {
+		console.error(error);
+		res.status(500).send('Error retrieving clothing');
+	}
 });
 
-module.exports = router;
+app.listen(3000, () => console.log('Server ready on port 3000.'));
+
+module.exports = app;
