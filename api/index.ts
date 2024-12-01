@@ -21,28 +21,28 @@ app.get("/:style/:color/:article", async (req, res) => {
     switch (style) {
       case "urban":
         const urban = await sql`
-          SELECT name, price, image, link, article
+          SELECT name, price, image, link
           FROM urban
           WHERE color = ${color} AND article = ${article}
           ORDER BY RANDOM() LIMIT 1`;
         return res.json(urban);
       case "greyman":
         const greyman = await sql`
-          SELECT name, price, image, link, article
+          SELECT name, price, image, link
           FROM greyman
           WHERE color = ${color} AND article = ${article}
           ORDER BY RANDOM() LIMIT 1`;
         return res.json(greyman);
       case "cyberpunk":
         const cyberpunk = await sql`
-          SELECT name, price, image, link, article
+          SELECT name, price, image, link
           FROM cyberpunk
           WHERE color = ${color} AND article = ${article}
           ORDER BY RANDOM() LIMIT 1`;
         return res.json(cyberpunk);
       case "outdoors":
         const outdoors = await sql`
-          SELECT name, price, image, link, article
+          SELECT name, price, image, link
           FROM outdoors
           WHERE color = ${color} AND article = ${article}
           ORDER BY RANDOM() LIMIT 1`;
