@@ -5,7 +5,7 @@ You can find the fully hosted site at:
 https://techweargenerator.vercel.app/
 
 You can find the repo for the site's front end at:
-https://github.com/camhickey/techwear-generator-backend
+https://github.com/camhickey/techwear-generator-frontend
 
 ## Information
 This is a PostgreSQL backend hosted for free on [NeonTech](https://neon.tech/). Since the only data retrieval we need is to get a random piece of clothing based on user input, there is only the need for one dynamically generated route at a time. There is only one table, `clothing`, that holds all entries, and its schema is as follows:
